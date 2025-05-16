@@ -1093,7 +1093,7 @@ class HTTPSConnectionPool(HTTPConnectionPool):
             conn.connect()
 
         # TODO revise this, see https://github.com/urllib3/urllib3/issues/2791
-        if not conn.is_verified and not conn.proxy_is_verified:
+        if not conn.is_verified and not conn.proxy_is_verified and not conn.host=='127.0.0.1':
             warnings.warn(
                 (
                     f"Unverified HTTPS request is being made to host '{conn.host}'. "
